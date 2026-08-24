@@ -22,7 +22,7 @@ class MessageSent implements ShouldBroadcastNow
         public Message $message
     )
     {
-        //
+        $this->message->load('user'); 
     }
 
     public function broadcastOn(): array

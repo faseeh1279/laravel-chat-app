@@ -9,7 +9,7 @@ window.Echo.channel('chat')
 
         messagesDiv.innerHTML += `
             <p>
-                <strong>${event.message.username}</strong>:
+                <strong>${event.message.user.name}</strong>:
                 ${event.message.message}
             </p>
         `;
@@ -17,20 +17,23 @@ window.Echo.channel('chat')
 
 window.sendMessage = function () {
 
-    const username =
-        document.getElementById('username').value;
-
     const message =
         document.getElementById('message').value;
 
     axios.post('/send-message', {
-        username,
         message
     })
     .then(response => {
+
         console.log('Message sent:', response.data);
+
     })
     .catch(error => {
-        console.error('Failed to send message:', error);
+
+        console.error(
+            'Failed to send message:',
+            error
+        );
+
     });
 };

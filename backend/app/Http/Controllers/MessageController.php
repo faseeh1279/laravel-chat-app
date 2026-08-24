@@ -14,12 +14,31 @@ class MessageController extends Controller
         return view('chat.index');
     }
 
-    public function sendMessage(Request $request){ 
-        $message = new Message(); 
-        $message->username = $request->username; 
-        $message->message = $request->message; 
-        $message->save(); 
-        broadcast(new MessageSent($message)); 
-        return response()->json($message); 
+    // public function sendMessage(Request $request){ 
+    //     $message = new Message(); 
+    //     $message->username = $request->username; 
+    //     $message->message = $request->message; 
+    //     $message->save(); 
+    //     broadcast(new MessageSent($message)); 
+    //     return response()->json($message); 
+    // }
+
+    public function sendMessage(Request $request)
+    {
+        $request->validate([
+            'message' => ['required', 'string'],
+        ]);
+
+        $message = new Message();
+
+        $message->user_id = auth()->id();
+
+        $message->message = $request->message;
+
+        $message->save();
+
+        broadcast(new MessageSent($message));
+
+        return response()->json($message);
     }
 }

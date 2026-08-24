@@ -13,16 +13,25 @@
 </head>
 
 <body>
+<h2>
+    Welcome, {{ auth()->user()->name }}
+</h2>
 
+<p>
+    Logged in as:
+    {{ auth()->user()->email }}
+</p>
+
+<form method="POST" action="{{ route('logout') }}">
+    @csrf
+
+    <button type="submit">
+        Logout
+    </button>
+</form>
 <div id="chat-container">
 
     <div id="messages"></div>
-
-    <input
-        type="text"
-        id="username"
-        placeholder="Your name"
-    />
 
     <textarea
         id="message"
