@@ -22,11 +22,11 @@ const authService = {
     },
 
     async getUser() {
-        return await api.get('/api/user');
+        return await api.get('/user');
     },
 
     async verify(){
-        return await api.post('/api/verify'); 
+        return await api.post('/verify'); 
     }
 };
 

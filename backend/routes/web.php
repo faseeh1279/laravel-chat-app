@@ -8,23 +8,23 @@ use App\Http\Controllers\AuthController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/', function () {
+// Route::get('/', function () {
 
-    if (Auth::check()) {
-        return redirect('/chat');
-    }
+//     if (Auth::check()) {
+//         return redirect('/chat');
+//     }
 
-    return redirect('/login');
-});
+//     return redirect('/login');
+// });
 // Route::post('/login', [AuthController::class, 'login']);
 // Route::post('/logout', [AuthController::class, 'logout'])
 //     ->middleware('auth:sanctum');
-Route::get('/login', [AuthController::class, 'showLogin'])
-    ->name('login');
+// Route::get('/login', [AuthController::class, 'showLogin'])
+//     ->name('login');
 
-Route::post('/login', [AuthController::class, 'login']);
+// Route::post('/login', [AuthController::class, 'login']);
 
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+// Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 
