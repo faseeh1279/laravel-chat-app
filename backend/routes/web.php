@@ -26,5 +26,11 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+
+
 Route::get('/chat', [MessageController::class, 'index'])->middleware('auth');
+
 Route::post('/send-message', [MessageController::class, 'sendMessage']);
+
+Route::post('/tokens/create', [AuthController::class, 'generateToken']);
+
